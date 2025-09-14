@@ -1,8 +1,14 @@
-import "./App.css";
+import "./App.scss";
 import Hero from "./components/Hero";
+import Navigation from "./components/Navigaton";
 
 function App() {
-    return <Hero />;
+    return (
+        <>
+            <Hero />
+            <Navigation />
+        </>
+    );
 }
 
 export default App;

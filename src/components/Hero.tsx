@@ -1,4 +1,4 @@
-import "../App.css";
+import "./Hero.scss";
 import headshot from "../assets/headshot.png";
 
 function Hero() {
