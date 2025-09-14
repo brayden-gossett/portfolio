@@ -1,44 +1,42 @@
-import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
 import "./Navigation.scss";
 
 const Navigation = () => {
-    const [activeTab, setActiveTab] = useState(1);
+    const location = useLocation();
+    const [activeTab, setActiveTab] = useState(getActiveTab(location.pathname));
+
+    function getActiveTab(path: string) {
+        if (path === "/") return 1;
+        if (path === "/projects") return 2;
+        if (path === "/blog") return 3;
+        return 1;
+    }
+
+    useEffect(() => {
+        setActiveTab(getActiveTab(location.pathname));
+    }, [location]);
 
     return (
         <div className="container">
             <div className="tabs">
-                <input
-                    type="radio"
-                    id="radio-1"
-                    name="tabs"
-                    checked={activeTab === 1}
-                    onChange={() => setActiveTab(1)}
-                />
-                <label className="tab" htmlFor="radio-1">
+                <Link to="/" className="tab" onClick={() => setActiveTab(1)}>
                     Experience
-                </label>
-
-                <input
-                    type="radio"
-                    id="radio-2"
-                    name="tabs"
-                    checked={activeTab === 2}
-                    onChange={() => setActiveTab(2)}
-                />
-                <label className="tab" htmlFor="radio-2">
+                </Link>
+                <Link
+                    to="/projects"
+                    className="tab"
+                    onClick={() => setActiveTab(2)}
+                >
                     Projects
-                </label>
-
-                <input
-                    type="radio"
-                    id="radio-3"
-                    name="tabs"
-                    checked={activeTab === 3}
-                    onChange={() => setActiveTab(3)}
-                />
-                <label className="tab" htmlFor="radio-3">
+                </Link>
+                <Link
+                    to="/blog"
+                    className="tab"
+                    onClick={() => setActiveTab(3)}
+                >
                     Blog
-                </label>
+                </Link>
 
                 <span
                     className="glider"

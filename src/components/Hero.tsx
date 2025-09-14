@@ -1,5 +1,6 @@
 import "./Hero.scss";
 import headshot from "../assets/headshot.png";
+import { BrowserRouter, Link } from "react-router-dom";
 
 function Hero() {
     return (

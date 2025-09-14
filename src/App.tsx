@@ -1,13 +1,18 @@
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.scss";
-import Hero from "./components/Hero";
-import Navigation from "./components/Navigaton";
+import Home from "./Pages/Home";
+import Blog from "./Pages/Blog";
+import Projects from "./Pages/Projects";
 
 function App() {
     return (
-        <>
-            <Hero />
-            <Navigation />
-        </>
+        <Router>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/blog" element={<Blog />} />
+                <Route path="/projects" element={<Projects />} />
+            </Routes>
+        </Router>
     );
 }
 
